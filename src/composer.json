@@ -1,0 +1,27 @@
+{
+    "name": "tuezy/support",
+    "authors": [
+        {
+            "name": "hoangtu",
+            "email": "koding.men@gmail.com"
+        }
+    ],
+    "require": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "App\\": "./"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "App\\Core\\Providers\\CoreServiceProvider"
+            ],
+            "alias": [
+
+            ]
+        }
+    }
+}
