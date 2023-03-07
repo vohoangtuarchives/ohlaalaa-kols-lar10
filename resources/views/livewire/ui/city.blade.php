@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-12 mb-3">
             <label for="">Địa chỉ</label>
-            <input type="text" name="address" class="form-control">
+            <input type="text" name="address" class="form-control" value="{{ $address ?? '' }}">
         </div>
     </div>
 </div>

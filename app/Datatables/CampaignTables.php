@@ -84,9 +84,9 @@ class CampaignTables extends DatatablesService{
                 'data' => 'level_'.$i,
                 'name' => 'level_'.$i,
                 'title' => '% cấp '. $i,
-                'searchable' => true,
-                'orderable' => true,
-                'exportable' => true,
+                'searchable' => false,
+                'orderable' => false,
+                'exportable' => false,
                 'printable' => true,
                 'class' => 'dt-date',
                 'render' => function($value) use ($leveli){

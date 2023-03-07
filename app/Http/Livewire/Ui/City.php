@@ -22,6 +22,7 @@ class City extends Component
     public $city;
 
     public $cities;
+
     public $district;
 
     public $districts;
@@ -31,6 +32,8 @@ class City extends Component
     public $wards;
 
     public $customer;
+
+    public $address;
 
     public function __construct()
     {
@@ -47,6 +50,9 @@ class City extends Component
             $this->city = $customer->city;
             $this->district = $customer->district;
             $this->ward = $customer->ward;
+            $this->districts = $this->districtRepository->where("city_id", "=", $this->city)->get();
+            $this->wards = $this->wardRepository->where("district_id", "=", $this->ward)->get();
+            $this->address = $customer->address;
         }
     }
 

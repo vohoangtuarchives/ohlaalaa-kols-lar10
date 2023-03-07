@@ -13,6 +13,9 @@ return [
         'campaigns' => [
             'title' => 'Chiến dịch'
         ],
+        'campaigns_register' => [
+            'title' => 'Đăng ký chiến dịch'
+        ],
         'services' => [
             'title' => 'Chức năng'
         ],

@@ -23,17 +23,17 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item" href="pages-profile">
+                        <div class="dropdown-item" >
                             <i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
                             <span class="align-middle">Balance :
                                 <b>{{ core()->format_money(Auth::guard("customers")->user()->balance) }} đ</b>
                             </span>
-                        </a>
+                        </div>
                         <a class="dropdown-item" href="{{route("profile.settings")}}">
-                            <i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Cài đặt</span>
+                            <i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Hồ sơ</span>
                         </a>
-                        <a class="dropdown-item" href="auth-lockscreen-basic">
-                            <i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span>
+                        <a class="dropdown-item" href="{{route("profile.change-password")}}">
+                            <i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Đổi mật khẩu</span>
                         </a>
                         <a class="dropdown-item " href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">@lang('translation.logout')</span></a>

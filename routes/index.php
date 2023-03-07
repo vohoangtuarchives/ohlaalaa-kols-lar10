@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:customers')->group(function () {
     Route::get('/', [\App\Http\Controllers\Index\IndexController::class, 'index'])->name("index");
-    Route::get('/profile/settings', [\App\Http\Controllers\Index\IndexController::class, 'settings'])->name("profile.settings");
-    Route::get('/kols/edit', function () {
-        return view('index.kols.setting');
-    });
-
-
+    Route::get('/ho-so', [\App\Http\Controllers\Index\ProfileController::class, 'index'])->name("profile.settings");
+    Route::post('/ho-so', [\App\Http\Controllers\Index\ProfileController::class, 'update'])->name("profile.update");
+    Route::get('/doi-mat-khau', [\App\Http\Controllers\Index\ProfileController::class, 'updatePassword'])->name("profile.change-password");
+    Route::post('/doi-mat-khau', [\App\Http\Controllers\Index\ProfileController::class, 'storeUpdatePassword'])->name("profile.change-password.store");
     Route::get('/san-pham', [\App\Http\Controllers\Index\CampaignController::class, 'index'])->name("index.products");
+
+    Route::post('/san-pham', [\App\Http\Controllers\Index\CampaignController::class, 'join'])->name("index.campaign.join");
+
+    Route::get('/links', [\App\Http\Controllers\Index\LinkController::class, 'links'])->name("index.links");
 
 });
 

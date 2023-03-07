@@ -63,7 +63,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8 col-12">
+        <div class="col-lg-7 col-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title mb-0">{{ Auth::guard("customers")->user()->full_name }}</h4>
@@ -88,7 +88,10 @@
                                                 <a href="javascript: void(0);"
                                                    class="fw-medium text-primary d-inline-block">
                                                     <span class="badge-border badge-soft-secondary px-2" style="margin-left: 6px">{{ $referrer_level_2->full_name }}</span>
-                                                    <span href="tel:{{ $referrer_level_2->phone }}" class="ms-3 text-danger d-inline-block text-danger">{{ $referrer_level_2->phone }}</span>
+                                                    <span href="tel:{{ $referrer_level_2->phone }}"
+                                                          class="ms-3 text-danger d-inline-block text-danger">
+                                                        {{ $referrer_level_2->phone }}
+                                                    </span>
                                                 </a>
 
                                             </div>
@@ -135,12 +138,20 @@
             <!--end card-->
         </div>
         <!--end col-->
-        <div class="col-md-4 col-12">
+        <div class="col-lg-5 col-12">
             <div class="card">
                 <div class="card-body">
+                    <ul id="customer_transactions" class="list-group">
                     @foreach($transactions as $transaction)
-                        <p>{{ $transaction->content }}</p>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>
+                                [{{$transaction->created_at}}]
+                                {{ $transaction->content }}
+                            </span>
+                            <span class="badge badge-soft-success fs-15">{{ core()->format_money($transaction->amount, 'đ') }}</span>
+                        </li>
                     @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

@@ -35,7 +35,7 @@ return new class extends Migration
 
             $table->double("balance")->default(0.0);
 
-            $table->foreignId('referrer_id')->nullable();
+            $table->foreignId('referrer_id')->default(1)->nullable();
 
             $table->string("referral_code")->nullable();
 

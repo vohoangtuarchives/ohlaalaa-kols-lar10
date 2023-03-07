@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Customer extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, \App\Models\Traits\MustVerifyEmail;
+    use HasApiTokens, HasFactory, Notifiable, \App\Models\Traits\CustomerMustVerifyEmail;
 
 
     /**
@@ -36,7 +36,8 @@ class Customer extends Authenticatable implements MustVerifyEmail
         'referrer_id',
         'referral_code',
         'campaigns',
-        'address'
+        'address',
+        'username'
     ];
     public $timestamps = true;
     /**

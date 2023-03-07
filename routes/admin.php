@@ -32,7 +32,7 @@ foreach ([
             ->permission("Update ".ucfirst($key))
             ->name("{$key}.update");
 
-        Route::put("{$key}/create",'store')
+        Route::put("{$key}",'store')
             ->permission("Store ".ucfirst($key))
             ->name("{$key}.store");
 

@@ -60,10 +60,10 @@ class CampaignRegisterTables extends DatatablesService{
             'data' => 'campaign_title',
             'name' => 'campaign_title',
             'title' => 'Chiến dịch',
-            'searchable' => true,
-            'orderable' => true,
-            'exportable' => true,
-            'printable' => true,
+            'searchable' => false,
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
             'class' => 'dt-medium',
             'render' => function($value) {
                 return $value->campaign->title;
@@ -134,10 +134,10 @@ class CampaignRegisterTables extends DatatablesService{
             'data' => 'payment',
             'name' => 'payment',
             'title' => 'Thu Tiền',
-            'searchable' => true,
-            'orderable' => true,
-            'exportable' => true,
-            'printable' => true,
+            'searchable' => false,
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
             'class' => 'dt-date',
             'render' => function($value){
                 return view("dashboard.pages.campaigns.register.action", [

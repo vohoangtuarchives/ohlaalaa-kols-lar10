@@ -43,7 +43,7 @@ $menu = [
 //        'sort'       => 1,
 //    ],
     [
-        "key"   => "campaigns",
+        "key"   => "campaigns_index",
         "title" => "admin.menu.campaigns.title",
         "icon"  => " ri-newspaper-fill",
         "route" => "dashboard.campaigns.index",
@@ -51,8 +51,8 @@ $menu = [
     ],
 
     [
-        "key"   => "campaigns",
-        "title" => "admin.menu.campaigns.title",
+        "key"   => "campaigns_register",
+        "title" => "admin.menu.campaigns_register.title",
         "icon"  => " ri-newspaper-fill",
         "route" => "dashboard.campaigns.register.index",
         'sort'       => 2,

@@ -1921,20 +1921,20 @@ if (mybutton) {
 		document.documentElement.scrollTop = 0;
 	}
 }
-
-Livewire.hook('message.sent', component => {
-	let pagePreloader = document.getElementById("preloader");
-	if(pagePreloader){
-		pagePreloader.style.opacity = "1";
-		pagePreloader.style.visibility = "visible";
-	}
-
-});
-Livewire.hook('message.received', component => {
-	let pagePreloader = document.getElementById("preloader");
-
-	if(pagePreloader){
-		pagePreloader.style.opacity = "0";
-		pagePreloader.style.visibility = "hidden";
-	}
-});
+//
+// Livewire.hook('message.sent', component => {
+// 	let pagePreloader = document.getElementById("preloader");
+// 	if(pagePreloader){
+// 		pagePreloader.style.opacity = "1";
+// 		pagePreloader.style.visibility = "visible";
+// 	}
+//
+// });
+// Livewire.hook('message.received', component => {
+// 	let pagePreloader = document.getElementById("preloader");
+//
+// 	if(pagePreloader){
+// 		pagePreloader.style.opacity = "0";
+// 		pagePreloader.style.visibility = "hidden";
+// 	}
+// });

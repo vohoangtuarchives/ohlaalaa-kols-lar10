@@ -19,9 +19,15 @@
 
                                     <div>
                                         @if(!$campaign->customer(\Illuminate\Support\Facades\Auth::guard("customers")->id()))
-                                            <a href="#!" class="btn btn-soft-success"> Tham gia</a>
+                                            <a class="btn btn-soft-success" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('join-campaign-form').submit();">
+                                                <i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">Tham gia</span></a>
+                                            <form id="join-campaign-form" action="{{ route('index.campaign.join') }}" method="POST" style="display: none;">
+                                                @csrf
+                                                <input type="hidden" name="campaign" value="{{$campaign->id}}">
+                                            </form>
+
                                         @else
-                                            <a href="#!" class="btn btn-soft-danger">Đã Tham gia</a>
+                                            <a href="#" class="btn btn-soft-danger">Đã Tham gia</a>
                                         @endif
 
                                     </div>

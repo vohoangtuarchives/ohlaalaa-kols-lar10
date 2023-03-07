@@ -35,10 +35,12 @@ class IndexController extends Controller
     public function initDate(Request $request){
         $this->currentDate = Carbon::now();
         $this->startDate = $this->currentDate->clone();
+        $this->startDate = $this->startDate->startOfDay();
         $this->endDate = null;
 
         if($request->has('start_date') && !empty($request->get('start_date'))){
             $this->startDate = Carbon::createFromFormat('d-m-Y', $request->get('start_date'));
+            $this->startDate = $this->startDate->startOfDay();
         }
         if($request->has('end_date') && !empty($request->get('end_date'))){
             $this->endDate = Carbon::createFromFormat('d-m-Y', $request->get('end_date'));
@@ -52,14 +54,14 @@ class IndexController extends Controller
 
         $user  = Auth::guard("customers")->user();
 
-        $referral_level_1_2 = $this->customersBetween($this->startDate)->where('referrer_id', '=', $user->id)->get($this->customerSelect);
+        $referral_level_1_2 = $this->customersBetween($this->startDate, $this->endDate)->where('referrer_id', '=', $user->id)->get($this->customerSelect);
 
         return view("index.welcome", [
             'referral_level_1_2' => $referral_level_1_2,
             'startDate' => $this->startDate->format('d-m-Y'),
             'endDate'   => $this->endDate ? $this->endDate->format('d-m-Y'): $this->startDate->format('d-m-Y'),
             'currentDate' => $this->currentDate->format('d-m-Y'),
-            'transactions' => $user->transactions()->get()
+            'transactions' => $this->period($user->transactions(), $this->startDate, $this->endDate)->get()
         ]);
     }
 

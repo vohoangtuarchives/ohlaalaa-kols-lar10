@@ -1,4 +1,4 @@
-@extends('layouts.master-layouts')
+@extends('index.layouts.master')
 @section('title')
     @lang('translation.settings')
 @endsection

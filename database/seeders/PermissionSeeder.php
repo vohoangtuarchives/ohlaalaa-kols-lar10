@@ -21,6 +21,10 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('permissions')->truncate();
+        DB::table('role_permissions')->truncate();
+        DB::table('user_roles')->truncate();
+
         Artisan::call("permission:reload");
     }
 }

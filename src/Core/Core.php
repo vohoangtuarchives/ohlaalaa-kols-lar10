@@ -160,8 +160,8 @@ class Core{
         return config($key, $default);
     }
 
-    public function format_money($value){
-        return number_format($value);
+    public function format_money($value, $postfix = ''){
+        return number_format($value) . $postfix;
     }
 
 

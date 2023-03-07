@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Index\Auth;
 
+use App\Events\Index\CustomerRegistered;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Customer;
@@ -78,15 +79,16 @@ class RegisteredUserController extends Controller
             $campaign = Campaign::where("id", '=', $campaignSlug)->first();
 
             $campaign->customers()->attach($user, [
-                'referrer_code' => $input['referrer_code'] ?? '',
-                'referrer_id' =>$input['referrer_id'] ?? '',
-                'date_start' => $campaign->date_start,
+                'referrer_code' => $input['referrer_code'] ?? null,
                 'amount' => $campaign->amount,
+                'referrer_id' =>$input['referrer_id'] ?? 1,
+                'date_start' => $campaign->date_start,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
         }
-        event(new Registered($user));
+
+        event(new CustomerRegistered($user));
 
         Auth::guard("customers")->login($user);
 

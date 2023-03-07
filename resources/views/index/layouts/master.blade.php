@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>@yield('title')| Velzon - Admin & Dashboard Template</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -11,6 +11,11 @@
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico')}}">
     @include('index.layouts.head-css')
     @vite(['resources/js/app.js'])
+    <style>
+        body{
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 @section('body')
@@ -25,6 +30,9 @@
         <!-- ============================================================== -->
         <div class="main-content">
             <div class="page-content">
+                <div class="container-fluid">
+                    @include("index.layouts.announce")
+                </div>
                 <div class="container-fluid">
                     @yield('content')
                 </div>
