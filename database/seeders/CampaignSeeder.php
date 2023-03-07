@@ -31,7 +31,7 @@ class CampaignSeeder extends Seeder
             'updated_at' => \Carbon\Carbon::now(),
         ]);
         DB::table('campaigns')->insert([
-            'id' => 1,
+            'id' => 2,
             'title'=> "Shop",
             'amount' => 4600000,
             'rebate_levels' => 3,
