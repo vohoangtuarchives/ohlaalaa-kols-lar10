@@ -12,7 +12,7 @@ class Ward extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, Sluggable;
 
-    protected $fillable = ['title', 'district_id'];
+    protected $fillable = ['title', 'district_id', 'path_with_type'];
 
     public $timestamps = true;
 

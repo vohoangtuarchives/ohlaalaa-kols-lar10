@@ -1,8 +1,10 @@
 <?php
 namespace App\Core\Providers;
 
+
+use App\Core\Commands\KodingRepository;
 use App\Core\Core;
-use App\Mixins\RouterMixin;
+use App\Core\Mixins\RouterMixin;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -12,18 +14,15 @@ class CoreServiceProvider extends ServiceProvider{
     {
         include dirname(__DIR__) . DIRECTORY_SEPARATOR . "functions.php";
 
-        foreach ([
-                     "Customer" , "City", "District", "Ward"
-                 ] as $key){
-            $this->app->singleton(
-                "App\\Repository\\".Str::plural($key)."\\{$key}RepositoryContract",
-                "App\\Repository\\".Str::plural($key)."\\{$key}RepositoryCache"
-            );
-        }
+
 
         $this->app->singleton("core", function (){
             return new Core();
         });
+
+        $this->commands([
+            KodingRepository::class
+        ]);
     }
 
     public function boot(){

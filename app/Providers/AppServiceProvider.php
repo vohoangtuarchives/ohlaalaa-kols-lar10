@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
@@ -12,7 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        foreach ([
+                     "Customer" , "City", "District", "Ward", 'Campaign', 'CampaignRebate', 'CampaignHistory', 'Setting',
+                    'Role', 'Permission', 'RolePermissions', 'UserPermissions', 'UserRoles', 'User', 'CustomerCampaign'
+                 ] as $key){
+            $this->app->singleton(
+                "App\\Repository\\".Str::plural($key)."\\{$key}RepositoryContract",
+                "App\\Repository\\".Str::plural($key)."\\{$key}RepositoryCache"
+            );
+        }
     }
 
     /**
@@ -20,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
+        Paginator::useBootstrap();
     }
 }

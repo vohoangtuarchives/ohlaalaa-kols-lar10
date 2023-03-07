@@ -61,6 +61,7 @@ class CitiesDistrictsWardsSeeder extends Seeder
                     foreach ($wards as $xa_phuong) {
                         $wardRepository->create([
                             'title' => !empty($xa_phuong->name_with_type) ? $xa_phuong->name_with_type : 'Xã ' . $quan_huyen->name,
+                            'path_with_type' => $xa_phuong->path_with_type,
                             'district_id' => $newDistrict->id
                         ]);
                         $this->command->getOutput()->writeln("xa_phuong <info>" . $xa_phuong->name_with_type . "</info> is created successfully");

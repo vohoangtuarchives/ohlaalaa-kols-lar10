@@ -145,7 +145,7 @@ class Core{
     }
 
 
-    public function getSetting($key){
+    public function getSetting($key, $default = ''){
         $settings =  Cache::remember("settings", 12000, function (){
             $settings = Setting::all(["key", "value"]);
             $result = [];
@@ -154,7 +154,10 @@ class Core{
             }
             return $result;
         });
-        return $settings[$key] ?? '';
+        if(isset($settings[$key])){
+            return $settings[$key];
+        }
+        return config($key, $default);
     }
 
     public function format_money($value){
