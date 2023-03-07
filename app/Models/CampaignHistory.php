@@ -12,7 +12,17 @@ class CampaignHistory extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['content', 'campaign_id'];
+    protected $fillable = ['content', 'campaign_id', 'type',
+        'level_1',
+        'level_2',
+        'level_3',
+        'level_4',
+        'level_5',
+        'level_6',
+        'level_7',
+        'level_8',
+        'level_9',
+        'level_10',];
 
     public $timestamps = true;
 
