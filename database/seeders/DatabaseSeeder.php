@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ACLSeed::class);
         $this->call(CampaignSeeder::class);
         $this->call(CustomerSeeder::class);
-
-//        $this->call(CitiesDistrictsWardsSeeder::class);
+        $this->call(CitiesDistrictsWardsSeeder::class);
     }
 }
