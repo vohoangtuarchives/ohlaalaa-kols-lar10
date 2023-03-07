@@ -19,8 +19,8 @@ class CampaignSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->delete();
-        DB::table('campaign')->insert([
+        DB::table('campaigns')->delete();
+        DB::table('campaigns')->insert([
             'id' => 1,
             'title'=> "Affiliate",
             'amount' => 2300000,
@@ -30,7 +30,7 @@ class CampaignSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);
-        DB::table('campaign')->insert([
+        DB::table('campaigns')->insert([
             'id' => 1,
             'title'=> "Shop",
             'amount' => 4600000,
