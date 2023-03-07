@@ -58,7 +58,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Customer::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255', 'unique:'.Customer::class],
             'gender' => ['required', 'string', 'max:255'],
         ]);
 
@@ -75,7 +75,7 @@ class RegisteredUserController extends Controller
         $user = Customer::create($data);
 
         foreach ($input['campaign'] as $campaignSlug){
-            $campaign = Campaign::where("slug", '=', $campaignSlug)->first();
+            $campaign = Campaign::where("id", '=', $campaignSlug)->first();
 
             $campaign->customers()->attach($user, [
                 'referrer_code' => $input['referrer_code'] ?? '',
