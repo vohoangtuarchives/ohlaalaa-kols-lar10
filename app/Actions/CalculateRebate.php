@@ -66,7 +66,7 @@ class CalculateRebate{
 
         }
 
-        if($customer_id_level_2 > 0){
+        if(isset($customer_id_level_2) && $customer_id_level_2 > 0){
             $rebate_level_2 = $campaign->currenRateLevel_2() * $campaign->amount / 100;
 
 
@@ -81,10 +81,11 @@ class CalculateRebate{
                 'balance' => $customer_level_2->balance + $rebate_level_2,
                 'customer_id' => $customer_id_level_2
             ]);
+
             $customer_id_level_3 = $customer_level_2->referrer_id;
         }
 
-        if($customer_id_level_3 > 0){
+        if(isset($customer_id_level_3) && $customer_id_level_3 > 0){
             $rebate_level_3 = $campaign->currenRateLevel_3() * $campaign->amount / 100;
 
             Customer::where('id', '=', $customer_id_level_3)->update([

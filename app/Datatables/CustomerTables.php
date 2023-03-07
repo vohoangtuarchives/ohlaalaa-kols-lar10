@@ -53,8 +53,8 @@ class CustomerTables extends DatatablesService{
 
 
         $this->addColumn([
-            'data' => 'full_name',
-            'name' => 'full_name',
+            'data' => 'name',
+            'name' => 'name',
             'title' => 'Họ Tên',
             'searchable' => true,
             'orderable' => true,

@@ -19,6 +19,26 @@ class CampaignSeeder extends Seeder
      */
     public function run(): void
     {
-        Campaign::factory()->count(5)->create();
+        DB::table('users')->delete();
+        DB::table('campaign')->insert([
+            'id' => 1,
+            'title'=> "Affiliate",
+            'amount' => 2300000,
+            'rebate_levels' => 3,
+            'date_start' => \Carbon\Carbon::now(),
+            'periods'   => 365,
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+        DB::table('campaign')->insert([
+            'id' => 1,
+            'title'=> "Shop",
+            'amount' => 4600000,
+            'rebate_levels' => 3,
+            'date_start' => \Carbon\Carbon::now(),
+            'periods'   => 3650,
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
     }
 }
