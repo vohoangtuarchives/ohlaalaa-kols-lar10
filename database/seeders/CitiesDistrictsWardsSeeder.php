@@ -22,7 +22,7 @@ class CitiesDistrictsWardsSeeder extends Seeder
         $districtRepository = app(DistrictRepositoryContract::class);
         $wardRepository = app(WardRepositoryContract::class);
 
-        $city = $cityRepository->find(1);
+        $city = \Illuminate\Support\Facades\DB::table('cities')->find(1);
         if (empty ($city)) {
 
 
