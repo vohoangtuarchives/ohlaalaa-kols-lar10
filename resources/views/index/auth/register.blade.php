@@ -147,7 +147,7 @@
 
                                             @foreach($campaigns as $campaign)
                                                 <div class="form-check form-switch form-switch-custom form-switch-success mb-3">
-                                                    <input class="form-check-input" type="checkbox" name="campaign[]" value="{{$campaign->slug}}" role="switch" id="SwitchCheck{{$campaign->id}}">
+                                                    <input class="form-check-input" type="checkbox" name="campaign[]" value="{{ $campaign->id }}" role="switch" id="SwitchCheck{{$campaign->id}}">
                                                     <label class="form-check-label" for="SwitchCheck{{$campaign->id}}">{{ $campaign->title }} (<span class="text-red">{{core()->format_money($campaign->amount)}} đ</span>)</label>
                                                 </div>
                                             @endforeach

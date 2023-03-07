@@ -69,6 +69,7 @@ class RegisteredUserController extends Controller
 
         $data = array_merge($input, [
             'referral_code' => md5($input['email']),
+            'remember_token' => Str::random(10),
             'campaigns' => implode(',', $input['campaign'])
         ]);
         $user = Customer::create($data);
@@ -77,10 +78,9 @@ class RegisteredUserController extends Controller
             $campaign = Campaign::where("slug", '=', $campaignSlug)->first();
 
             $campaign->customers()->attach($user, [
-                'referrer_code' => $input['referrer_code'],
-                'referrer_id' =>$input['referrer_id'],
+                'referrer_code' => $input['referrer_code'] ?? '',
+                'referrer_id' =>$input['referrer_id'] ?? '',
                 'date_start' => $campaign->date_start,
-                'remember_token' => Str::random(10),
                 'amount' => $campaign->amount,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
