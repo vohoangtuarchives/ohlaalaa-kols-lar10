@@ -75,7 +75,7 @@ class CalculateRebate{
             ]);
 
             CustomerTransaction::create([
-                'content' => 'Thưởng level 2 ở chiến dịch ['.$campaign->title.'] '.core()->format_money($rebate_level_2) . 'đ',
+                'content' => 'Thưởng level 2 ['.$campaign->title.']',
                 'amount' => $rebate_level_2,
                 'old_balance' => $customer_level_2->balance,
                 'balance' => $customer_level_2->balance + $rebate_level_2,
@@ -92,7 +92,7 @@ class CalculateRebate{
                 'balance' => $customer_level_2->referrer->balance + $rebate_level_3,
             ]);
             CustomerTransaction::create([
-                'content' => 'Thưởng level 3 ở chiến dịch ['.$campaign->title.'] '.core()->format_money($rebate_level_3) . 'đ',
+                'content' => 'Thưởng level 3 ['.$campaign->title.']',
                 'amount' => $rebate_level_3,
                 'old_balance' => $customer_level_2->referrer->balance,
                 'balance' => $customer_level_2->referrer->balance + $rebate_level_3,
@@ -100,10 +100,6 @@ class CalculateRebate{
             ]);
         }
 
-
-
-
     }
-
 
 }
