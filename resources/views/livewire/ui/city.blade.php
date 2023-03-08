@@ -14,7 +14,7 @@
             <label class="form-label">Quận Huyện</label>
             <select wire:model="district" name="district" wire:click="district($event.target.value)" class="form-select">
                 <option selected>Chọn Quận Huyện</option>
-                @isset($districts)
+                @if(!empty($districts))
                     @foreach($districts as $district)
                         <option value="{{$district->id}}"  @if(old('district') == $district->id) selected @endif>{{$district->title}}</option>
                     @endforeach
