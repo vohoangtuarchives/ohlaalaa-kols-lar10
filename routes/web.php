@@ -24,9 +24,7 @@ Route::prefix("dashboard")->name("dashboard.")->group(function(){
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-        Route::get('/', function () {
-            return view('dashboard.index');
-        })->name('index');
+        Route::get('/', [\App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('index');
         require __DIR__.'/admin.php';
     });
 

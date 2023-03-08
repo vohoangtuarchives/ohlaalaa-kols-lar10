@@ -71,4 +71,5 @@ $menu = [
 return [
     "menu" => $menu,
     'admin_prefix' => 'dashboard',
+    'guard' => 'web',
 ];

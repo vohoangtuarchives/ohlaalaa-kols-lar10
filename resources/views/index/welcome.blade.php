@@ -66,7 +66,7 @@
         <div class="col-lg-7 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">{{ Auth::guard("customers")->user()->full_name }}</h4>
+                    <h4 class="card-title mb-0">{{ Auth::guard("customers")->user()->name }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -76,7 +76,7 @@
                                 <ul class="list-unstyled mb-0" >
                                     <li class="p-0 parent-title">
                                         <a href="javascript: void(0);" class="fw-medium fs-14 d-inline-block me-2">
-                                            <span class=" badge-border badge-soft-success px-2">{{ $referrer_level_1->full_name }}</span>
+                                            <span class=" badge-border badge-soft-success px-2">{{ $referrer_level_1->name }}</span>
                                             <span  class="text-danger d-inline-block">{{ $referrer_level_1->phone }}</span>
                                         </a>
 
@@ -87,7 +87,7 @@
                                             <div class="list-wrap">
                                                 <a href="javascript: void(0);"
                                                    class="fw-medium text-primary d-inline-block">
-                                                    <span class="badge-border badge-soft-secondary px-2" style="margin-left: 6px">{{ $referrer_level_2->full_name }}</span>
+                                                    <span class="badge-border badge-soft-secondary px-2" style="margin-left: 6px">{{ $referrer_level_2->name }}</span>
                                                     <span href="tel:{{ $referrer_level_2->phone }}"
                                                           class="ms-3 text-danger d-inline-block text-danger">
                                                         {{ $referrer_level_2->phone }}
@@ -101,7 +101,7 @@
                                                         <li>
                                                             <a href="javascript: void(0);" class="d-inline-block">
                                                                 <span class="badge-border badge-soft-info px-2" style="margin-left: 6px">
-                                                                    {{ $referrer_level_3->full_name }}
+                                                                    {{ $referrer_level_3->name }}
                                                                 </span>
                                                                 <span class="ms-3 text-danger d-inline-block text-danger">{{ $referrer_level_3->phone }}</span>
                                                             </a>
@@ -111,7 +111,7 @@
                                                                     <li>
                                                                         <a href="javascript: void(0);">
                                                                             <span class="badge-border badge-soft-dark px-2" style="margin-left: 6px">
-                                                                                {{ $referrer_level_4->full_name }}
+                                                                                {{ $referrer_level_4->name }}
                                                                             </span>
                                                                             <span class="ms-3 text-danger d-inline-block text-danger">{{ $referrer_level_4->phone }}</span>
                                                                         </a>

@@ -23,11 +23,11 @@ class Core{
 
     public function detectGuard(){
         if(
-            is_numeric(strpos(request()->getRequestUri() , config("admin.admin_url_prefix"))) &&
-            strpos(request()->getRequestUri() , config("admin.admin_url_prefix")) <= 1){
+            is_numeric(strpos(request()->getRequestUri() , config("admin.admin_prefix","dashboard"))) &&
+            strpos(request()->getRequestUri() , config("admin.admin_prefix","dashboard")) <= 1){
             return config("admin.guard");
         }
-        return config("auth.defaults.guard");
+        return "customers";
     }
 
 
