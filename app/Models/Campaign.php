@@ -27,7 +27,7 @@ class Campaign extends Model
 
     public function rebates()
     {
-        return $this->hasMany(CampaignRebate::class);
+        return $this->hasMany(CampaignRebate::class)->orderByDesc("id");
     }
 
     public function history(){
@@ -35,7 +35,7 @@ class Campaign extends Model
     }
 
     public function currentRebate(){
-        return $this->rebates ? $this->rebates->orderBy("id", "desc")->first() : null;
+        return $this->rebates ? $this->rebates->first() : null;
     }
 
     public function currenRateLevel_1(){
