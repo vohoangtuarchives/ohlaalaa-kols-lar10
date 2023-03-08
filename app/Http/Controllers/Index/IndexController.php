@@ -25,7 +25,7 @@ class IndexController extends Controller
 
     protected $customerRepository;
 
-    protected $customerSelect = ['id', 'full_name', 'phone'];
+    protected $customerSelect = ['id', 'full_name', 'phone', 'name'];
 
     public function __construct(CustomerRepositoryContract $customerRepository)
     {
