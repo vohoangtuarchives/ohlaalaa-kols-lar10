@@ -46,6 +46,8 @@ class City extends Component
     public function mount(Customer $customer = null){
         $this->customer = $customer;
         $this->cities = $this->cityRepository->all();
+        $this->districts = null;
+        $this->wards = null;
         if(!is_null($customer)){
             $this->city = $customer->city;
             $this->district = $customer->district;
