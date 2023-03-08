@@ -65,7 +65,7 @@ class DashboardController extends Controller
 
         $customerCampaigns = $this->registerCompletedCampaign($this->startDate, $this->endDate)
             ->groupBy("title")->get();
-
+        $campaigns = null;
        foreach ($customerCampaigns as $campaign){
            $campaigns[strtolower($campaign->title)] = $campaign->count();
        }
