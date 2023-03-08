@@ -76,6 +76,7 @@ class RegisteredUserController extends Controller
             'remember_token' => Str::random(10),
             'campaigns' => implode(',', $input['campaign'])
         ]);
+
         $user = Customer::create($data);
 
         foreach ($input['campaign'] as $campaignSlug){

@@ -70,16 +70,16 @@ class Campaign extends Model
                         'target' => $campaign->title
                     ]),
                     'campaign_id' => $campaign->id,
-                    'level_1' => $campaign->$this->currentRebate()->level_1,
-                    'level_2'=> $campaign->$this->currentRebate()->level_2,
-                    'level_3'=> $campaign->$this->currentRebate()->level_3,
-                    'level_4'=> $campaign->$this->currentRebate()->level_4,
-                    'level_5'=> $campaign->$this->currentRebate()->level_5,
-                    'level_6'=> $campaign->$this->currentRebate()->level_6,
-                    'level_7'=> $campaign->$this->currentRebate()->level_7,
-                    'level_8'=> $campaign->$this->currentRebate()->level_8,
-                    'level_9'=> $campaign->$this->currentRebate()->level_9,
-                    'level_10' => $campaign->$this->currentRebate()->level_10,
+                    'level_1' => $campaign->currentRebate()->level_1,
+                    'level_2'=> $campaign->currentRebate()->level_2,
+                    'level_3'=> $campaign->currentRebate()->level_3,
+                    'level_4'=> $campaign->currentRebate()->level_4,
+                    'level_5'=> $campaign->currentRebate()->level_5,
+                    'level_6'=> $campaign->currentRebate()->level_6,
+                    'level_7'=> $campaign->currentRebate()->level_7,
+                    'level_8'=> $campaign->currentRebate()->level_8,
+                    'level_9'=> $campaign->currentRebate()->level_9,
+                    'level_10' => $campaign->currentRebate()->level_10,
                     'type' => 'created'
                 ]);
             }
@@ -96,16 +96,16 @@ class Campaign extends Model
                             'target' => $campaign->title
                         ]),
                     'campaign_id' => $campaign->id,
-                    'level_1' => $campaign->$this->currentRebate()->level_1,
-                    'level_2'=> $campaign->$this->currentRebate()->level_2,
-                    'level_3'=> $campaign->$this->currentRebate()->level_3,
-                    'level_4'=> $campaign->$this->currentRebate()->level_4,
-                    'level_5'=> $campaign->$this->currentRebate()->level_5,
-                    'level_6'=> $campaign->$this->currentRebate()->level_6,
-                    'level_7'=> $campaign->$this->currentRebate()->level_7,
-                    'level_8'=> $campaign->$this->currentRebate()->level_8,
-                    'level_9'=> $campaign->$this->currentRebate()->level_9,
-                    'level_10' => $campaign->$this->currentRebate()->level_10,
+                    'level_1' => $campaign->currentRebate()->level_1,
+                    'level_2'=> $campaign->currentRebate()->level_2,
+                    'level_3'=> $campaign->currentRebate()->level_3,
+                    'level_4'=> $campaign->currentRebate()->level_4,
+                    'level_5'=> $campaign->currentRebate()->level_5,
+                    'level_6'=> $campaign->currentRebate()->level_6,
+                    'level_7'=> $campaign->currentRebate()->level_7,
+                    'level_8'=> $campaign->currentRebate()->level_8,
+                    'level_9'=> $campaign->currentRebate()->level_9,
+                    'level_10' => $campaign->currentRebate()->level_10,
                     'type' => 'updated'
                 ]);
             }
@@ -135,7 +135,7 @@ class Campaign extends Model
                     "content" => __("admin.event.deleted", [
                             'name' => $user->name,
                             'target' => $campaign->title
-                        ]). json_encode($campaign->currentRebate()),
+                        ]),
                     'campaign_id' => $campaign->id
                 ]);
             }
