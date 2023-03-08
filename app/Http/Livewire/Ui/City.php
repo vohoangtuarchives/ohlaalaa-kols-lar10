@@ -70,6 +70,7 @@ class City extends Component
         $this->district = $district;
         $this->wards = $this->wardRepository->where("district_id", "=", $district)->get();
     }
+
     public function ward($ward){
         $this->ward = $ward;
     }

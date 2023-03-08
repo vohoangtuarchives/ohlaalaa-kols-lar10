@@ -14,11 +14,9 @@
             <label class="form-label">Quận Huyện</label>
             <select wire:model="district" name="district" wire:click="district($event.target.value)" class="form-select">
                 <option selected>Chọn Quận Huyện</option>
-                @isset($districts)
                     @foreach($districts as $district)
                         <option value="{{$district->id}}"  @if(old('district') == $district->id) selected @endif>{{$district->title}}</option>
                     @endforeach
-                @endisset
             </select>
             <input type="hidden" name="district_name" wire:model="district_name">
         </div>
@@ -26,11 +24,9 @@
             <label class="form-label">Phường Xã</label>
             <select wire:model="ward" name="ward" class="form-select" wire:click="ward($event.target.value)">
                 <option selected>Chọn Phường Xã</option>
-                @isset($wards)
                 @foreach($wards as $ward)
                     <option value="{{$ward->id}}"  @if(old('ward') == $ward->id) selected @endif>{{$ward->title}}</option>
                 @endforeach
-                @endisset
             </select>
             <input type="hidden" name="ward_name" wire:model="ward_name">
         </div>
