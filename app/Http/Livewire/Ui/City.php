@@ -62,13 +62,16 @@ class City extends Component
     }
 
     public function city($city){
-        $this->city = $city;
         $this->districts = $this->districtRepository->where("city_id", "=", $city)->get();
+        $this->city = $city;
+        $this->district = null;
+        $this->ward = null;
     }
 
     public function district($district){
-        $this->district = $district;
         $this->wards = $this->wardRepository->where("district_id", "=", $district)->get();
+        $this->district = $district;
+        $this->ward = null;
     }
 
     public function ward($ward){
