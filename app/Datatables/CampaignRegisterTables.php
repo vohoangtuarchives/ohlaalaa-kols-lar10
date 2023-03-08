@@ -11,7 +11,11 @@ class CampaignRegisterTables extends DatatablesService{
 
     public function query()
     {
-       return CustomerCampaign::with(["customer", "campaign"]);
+       $query = CustomerCampaign::with(["customer", "campaign"])
+           ->where("status", '=', 'pending');
+       dd(request());
+
+       return $query;
     }
 
     public function columns()
@@ -53,6 +57,34 @@ class CampaignRegisterTables extends DatatablesService{
             'class' => 'dt-medium',
             'render' => function($value) {
                 return $value->customer->name;
+            }
+        ]);
+
+        $this->addColumn([
+            'data' => 'phone',
+            'name' => 'customer.phone',
+            'title' => 'Điện thoại',
+            'searchable' => true,
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'class' => 'dt-medium',
+            'render' => function($value) {
+                return $value->customer->phone;
+            }
+        ]);
+
+        $this->addColumn([
+            'data' => 'email',
+            'name' => 'email',
+            'title' => 'EMail',
+            'searchable' => false,
+            'orderable' => false,
+            'exportable' => false,
+            'printable' => false,
+            'class' => 'dt-medium',
+            'render' => function($value) {
+                return $value->customer->email;
             }
         ]);
 
