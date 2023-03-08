@@ -35,7 +35,7 @@ class Campaign extends Model
     }
 
     public function currentRebate(){
-        return $this->rebates ? $this->rebates->first() : null;
+        return $this->rebates ? $this->rebates->orderBy("id", "desc")->first() : null;
     }
 
     public function currenRateLevel_1(){
