@@ -134,6 +134,7 @@ class CampaignController extends Controller
     }
 
     public function showCampaignRegister(CampaignRegisterTables $datatables){
+
         return $datatables->render("dashboard.pages.campaigns.register.index", [
             'entity' => "campaigns"
         ]);

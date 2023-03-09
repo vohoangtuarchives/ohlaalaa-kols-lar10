@@ -46,6 +46,9 @@ foreach ([
 Route::get('/register_campaigns', [\App\Http\Controllers\Dashboard\CampaignController::class, "showCampaignRegister"])
     ->permission("View Register Campaigns")
     ->name("campaigns.register.index");
+//Route::get('/pay-kol', [\App\Http\Controllers\Dashboard\PaymentController::class, "index"])
+//    ->permission("View Register Campaigns")
+//    ->name("campaigns.register.index");
 Route::post('/register_campaigns', [\App\Http\Controllers\Dashboard\CampaignController::class, "verifyPaymentCampaign"])
     ->permission("Verify Payment for Register Campaigns")
     ->name("campaigns.register.make-payment");

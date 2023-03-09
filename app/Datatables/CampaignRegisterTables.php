@@ -11,10 +11,10 @@ class CampaignRegisterTables extends DatatablesService{
 
     public function query()
     {
-       $query = CustomerCampaign::with(["customer", "campaign"])
-           ->where("status", '=', 'pending');
-       dd(request());
-
+       $query = CustomerCampaign::with(["customer", "campaign"]);
+        if(isset($this->request['status'])){
+            $query = $query->where("status", '=', $this->request['status']);
+        }
        return $query;
     }
 

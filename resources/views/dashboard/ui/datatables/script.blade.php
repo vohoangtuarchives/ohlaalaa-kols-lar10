@@ -1,6 +1,13 @@
+@php
+    if(!empty(request()->getQueryString())){
+        $queryStringparts = explode('&', request()->getQueryString());
+        foreach($queryStringparts as $query){
+            $queryStrings[] = explode("=", $query);
+        }
+    }
+@endphp
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-
         var datatableColumns = @json($columns ?? '{}');
         let table = new DataTable('#datatables-html', {
             processing: true,
@@ -17,7 +24,8 @@
                 "dataType": "json",
                 "type": "GET",
                 "data":{
-                    _token: "{{csrf_token()}}",
+                    _token: "{{csrf_token()}}",@isset($queryStrings)
+                        @foreach($queryStrings as $value) {{$value[0]}}: "{{$value[1]}}", @endforeach @endisset
                 }
             },
             "columns": datatableColumns

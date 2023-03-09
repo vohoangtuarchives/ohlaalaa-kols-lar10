@@ -33,12 +33,7 @@
                 <div class="card-header">
                     <div class="row align-items-center g-3">
                         <div class="col-md-3">
-                            <button class="btn btn-soft-danger"
-                                    id="remove-actions"
-                                    onclick="deleteMultiple()"
-                                    style="display: block;">
-                                <i class="ri-delete-bin-2-line"></i>
-                            </button>
+
                         </div>
                         <div class="col-md-auto ms-auto">
                             <div class="d-flex gap-2">

@@ -21,6 +21,8 @@ abstract class DatatablesService implements DatatablesHelperContract {
 
     protected $scriptColumns;
 
+    protected $request;
+
     protected $operators = [
         'eq'       => '=',
         'lt'       => '<',
@@ -66,6 +68,7 @@ abstract class DatatablesService implements DatatablesHelperContract {
     }
 
     public function render($view, $data = []){
+        $this->request = request()->except("_token");
         $this->columns();
         if (request()->ajax()) {
             return $this->prepareTables();
