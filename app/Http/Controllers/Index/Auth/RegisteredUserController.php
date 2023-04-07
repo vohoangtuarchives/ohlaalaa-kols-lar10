@@ -64,7 +64,6 @@ class RegisteredUserController extends Controller
         ]);
 
 
-
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
         $input['city'] = (int) $input['city'];
@@ -74,22 +73,23 @@ class RegisteredUserController extends Controller
         $data = array_merge($input, [
             'referral_code' => md5($input['email']),
             'remember_token' => Str::random(10),
-            'campaigns' => implode(',', $input['campaign'])
+            'campaigns' => implode(',', $input['campaign'] ?? [])
         ]);
 
         $user = Customer::create($data);
-
-        foreach ($input['campaign'] as $campaignSlug){
-            $campaign = Campaign::where("id", '=', $campaignSlug)->first();
-
-            $campaign->customers()->attach($user, [
-                'referrer_code' => $input['referrer_code'] ?? null,
-                'amount' => $campaign->amount,
-                'referrer_id' =>$input['referrer_id'] ?? 1,
-                'date_start' => $campaign->date_start,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ]);
+        if(isset($input['campaign'])){
+            foreach ($input['campaign'] as $campaignSlug){
+                $campaign = Campaign::where("id", '=', $campaignSlug)->first();
+    
+                $campaign->customers()->attach($user, [
+                    'referrer_code' => $input['referrer_code'] ?? null,
+                    'amount' => $campaign->amount,
+                    'referrer_id' =>$input['referrer_id'] ?? 1,
+                    'date_start' => $campaign->date_start,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ]);
+            }
         }
 
         event(new CustomerRegistered($user));
