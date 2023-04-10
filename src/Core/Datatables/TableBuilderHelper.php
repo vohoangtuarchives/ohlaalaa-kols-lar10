@@ -8,16 +8,16 @@ trait TableBuilderHelper{
     public function prepareQuery(){
         $query = $this->query();
 
-        if(request()->has('startTime')){
-            $parsedUrl['startTime'] = request()->get('startTime');
-            $this->startTime = !empty($parsedUrl['startTime'])
-                ? Carbon::createFromTimeString($parsedUrl['startTime'] . " 00:00:01")->format('Y-m-d 00:00:00')
+        if(request()->has('startDate')){
+            $parsedUrl['startDate'] = request()->get('startDate');
+            $this->startDate = !empty($parsedUrl['startDate'])
+                ? Carbon::createFromTimeString($parsedUrl['startDate'] . " 00:00:01")->format('Y-m-d 00:00:00')
                 : Carbon::createFromTimeString(Carbon::now()->subDays(30)->format('Y-m-d') . " 00:00:01")->format('Y-m-d 00:00:00');
         }
-        if(request()->has('endTime')){
-            $parsedUrl['endTime'] = request()->get('endTime');
-            $this->endTime = !empty($parsedUrl['endTime'])
-                ? Carbon::createFromTimeString($parsedUrl['endTime']. " 23:59:59")->format('Y-m-d 23:59:59')
+        if(request()->has('endDate')){
+            $parsedUrl['endDate'] = request()->get('endDate');
+            $this->endDate = !empty($parsedUrl['endDate'])
+                ? Carbon::createFromTimeString($parsedUrl['endDate']. " 23:59:59")->format('Y-m-d 23:59:59')
                 : Carbon::now()->format('Y-m-d 23:59:59');
         }
 
@@ -39,9 +39,9 @@ trait TableBuilderHelper{
                     return $value->{$column['data']};
                 });
             }
-            if(isset($column['orderable']) && $column['orderable'] == false){
-                $builder = $builder->orderColumn($column['data'], false);
-            }
+//            if(isset($column['orderable']) && $column['orderable'] == false){
+//                $builder = $builder->orderColumn($column['data'], false);
+//            }
 
             if(isset($column['raw']) && $column['raw'] == true){
                 $rawColumns[] = $column['data'];

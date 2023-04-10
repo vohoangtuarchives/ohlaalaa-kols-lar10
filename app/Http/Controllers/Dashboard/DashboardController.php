@@ -42,7 +42,7 @@ class DashboardController extends Controller
     public function initDate(Request $request){
         $this->currentDate = Carbon::now();
         $this->startDate = $this->currentDate->clone();
-        $this->startDate = $this->startDate->startOfDay();
+        $this->startDate = $this->startDate->subDays(7)->startOfDay();
         $this->endDate = null;
 
         if($request->has('start_date') && !empty($request->get('start_date'))){
@@ -71,7 +71,7 @@ class DashboardController extends Controller
        }
         return view("dashboard.index", [
             'startDate' => $this->startDate->format('d-m-Y'),
-            'endDate'   => $this->endDate ? $this->endDate->format('d-m-Y'): $this->startDate->format('d-m-Y'),
+            'endDate'   => $this->endDate ? $this->endDate->format('d-m-Y'): $this->currentDate->format('d-m-Y'),
             'currentDate' => $this->currentDate->format('d-m-Y'),
             'customers' => $customers,
             'campaigns' => $campaigns

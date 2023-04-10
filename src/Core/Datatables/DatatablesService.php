@@ -16,8 +16,8 @@ abstract class DatatablesService implements DatatablesHelperContract {
 
     protected $itemsPerPage = 50;
 
-    protected $startTime = '';
-    protected $endTime = '';
+    protected $startDate = '';
+    protected $endDate = '';
 
     protected $scriptColumns;
 

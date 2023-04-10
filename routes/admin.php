@@ -49,6 +49,14 @@ Route::get('/register_campaigns', [\App\Http\Controllers\Dashboard\CampaignContr
 //Route::get('/pay-kol', [\App\Http\Controllers\Dashboard\PaymentController::class, "index"])
 //    ->permission("View Register Campaigns")
 //    ->name("campaigns.register.index");
+
 Route::post('/register_campaigns', [\App\Http\Controllers\Dashboard\CampaignController::class, "verifyPaymentCampaign"])
     ->permission("Verify Payment for Register Campaigns")
     ->name("campaigns.register.make-payment");
+
+Route::get('/reports/kol-revenue', [\App\Http\Controllers\Dashboard\ReportController::class, "showKolRevenue"])
+    ->permission("Show Kol Revenue")
+    ->name("reports.kols.revenue");
+
+Route::get('/reports/kol-revenue/export', [\App\Http\Controllers\Dashboard\ReportController::class, "exportKolRevenue"])
+    ->permission("Export Kol Revenue")->name("reports.kols.revenue.export");

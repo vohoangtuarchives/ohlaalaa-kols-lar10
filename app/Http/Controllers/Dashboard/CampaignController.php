@@ -14,6 +14,7 @@ use App\Models\Campaign;
 
 use App\Repository\CustomerCampaigns\CustomerCampaignRepositoryContract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -133,10 +134,28 @@ class CampaignController extends Controller
         }
     }
 
-    public function showCampaignRegister(CampaignRegisterTables $datatables){
+    protected $startDate;
+    protected $endDate;
 
+    protected $currentDate;
+
+    public function showCampaignRegister(CampaignRegisterTables $datatables){
+        $this->currentDate = Carbon::now();
+        $this->startDate = $this->currentDate->clone();
+        $this->startDate = $this->startDate->subDays(7)->startOfDay();
+        $this->endDate = null;
+
+        if(request()->has('startDate') && !empty(request()->get('startDate'))){
+            $this->startDate = Carbon::createFromFormat('d-m-Y', request()->get('startDate'));
+            $this->startDate = $this->startDate->startOfDay();
+        }
+        if(request()->has('endDate') && !empty(request()->get('endDate'))){
+            $this->endDate = Carbon::createFromFormat('d-m-Y', request()->get('endDate'));
+        }
         return $datatables->render("dashboard.pages.campaigns.register.index", [
-            'entity' => "campaigns"
+            'entity' => "campaigns",
+            'startDate' => $this->startDate->format('d-m-Y'),
+            'endDate'   => $this->endDate ? $this->endDate->format('d-m-Y'): $this->currentDate->format('d-m-Y'),
         ]);
     }
 

@@ -12,8 +12,12 @@ class CustomerTransaction extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['content','status','old_balance', 'amount', 'balance', 'customer_id'];
+    protected $fillable = ['content','status','old_balance', 'amount', 'balance', 'customer_id', 'completed_at'];
 
     public $timestamps = true;
+
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
 
 }

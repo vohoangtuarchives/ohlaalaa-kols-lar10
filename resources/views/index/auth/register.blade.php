@@ -69,21 +69,6 @@
                                                @lang("app.register.invalid-feedback.email")
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="username" class="form-label">Bí danh <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                                name="username" value="{{ old('name') }}" id="username"
-                                                placeholder="Nhập bí danh sẽ sử dụng" required>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            <div class="invalid-feedback">
-                                                @lang("app.register.invalid-feedback.username")
-                                            </div>
-                                        </div>
 
                                         <div class="mb-2">
                                             <label for="password" class="form-label">Mật Khẩu <span

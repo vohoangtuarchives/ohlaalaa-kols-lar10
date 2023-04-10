@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\App;
 use App\Core\Repository\Traits\Common;
 
 abstract class Repository implements RepositoryContract{
+
     use Common;
+
     protected $model;
+
     protected $originalModel;
 
     public function __construct()
@@ -45,9 +48,11 @@ abstract class Repository implements RepositoryContract{
     public function with(array $with = [])
     {
         $model = $this->getModel();
+
         if (!empty($with)) {
             $this->model = $model->with($with);
         }
+
         return $this->model;
     }
 
@@ -59,7 +64,7 @@ abstract class Repository implements RepositoryContract{
 
     /**
      * @param array $where
-     * @param null|Eloquent|Builder $model
+     * @param null|Eloquent\|Builder $model
      */
     public function applyConditions(array $where, &$model = null)
     {

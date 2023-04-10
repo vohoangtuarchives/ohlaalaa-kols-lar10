@@ -61,6 +61,8 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'phone' => ['required', 'string', 'max:255', 'unique:'.Customer::class],
             'gender' => ['required', 'string', 'max:255'],
+            'city' => ['required'],
+            'district' => ['required'],
         ]);
 
 

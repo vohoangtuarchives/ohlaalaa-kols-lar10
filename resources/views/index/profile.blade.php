@@ -40,21 +40,6 @@
                                 @lang("app.register.invalid-feedback.email")
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Bí danh <span
-                                        class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                   name="username" value="{{ $customer->username }}" id="username"
-                                   placeholder="Nhập bí danh sẽ sử dụng" required>
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                            @enderror
-                            <div class="invalid-feedback">
-                                @lang("app.register.invalid-feedback.username")
-                            </div>
-                        </div>
 
                         <div class="mb-4">
                             @livewire("ui.city", ['customer' => $customer])
@@ -64,7 +49,7 @@
                                         class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('phone') is-invalid @enderror"
                                    name="phone" value="{{ $customer->phone }}" id="phone"
-                                   placeholder="Nhập số điện thoại" required>
+                                   placeholder="Nhập số điện thoại" required disabled>
                             @error('phone')
                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

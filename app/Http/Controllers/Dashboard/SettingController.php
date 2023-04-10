@@ -52,7 +52,6 @@ class SettingController extends Controller
             return Response::make($validation->errors()->first(), 400);
         }
 
-
         foreach ($input as $key => $value){
             $this->settingRepository->updateOrCreate([
                 'key' => $key

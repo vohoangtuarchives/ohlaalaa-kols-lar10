@@ -15,7 +15,7 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="@if (Auth::guard("customers")->user()->avatar != ''){{ Auth::guard("customers")->user()->avatar }}@else{{ URL::asset('assets/images/users/avatar-1.jpg') }}@endif" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="@if (Auth::guard("customers")->user()->avatar != ''){{ Auth::guard("customers")->user()->avatar }}@else{{ URL::asset('assets/images/uavatar.png') }}@endif" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{Auth::guard("customers")->user()->name}}</span>
                             </span>

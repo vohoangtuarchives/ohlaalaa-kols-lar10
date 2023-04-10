@@ -41,6 +41,7 @@ class CalculateRebate{
         $campaign = Campaign::find($this->campaign_id);
 
         $customer = Customer::with("referrer")->where('id', '=', $this->customer_id)->first();
+
         $customer_id_level_1 = $customer->referrer_id ?? 0;
 
 
@@ -86,11 +87,13 @@ class CalculateRebate{
         }
 
         if(isset($customer_id_level_3) && $customer_id_level_3 > 0){
+
             $rebate_level_3 = $campaign->currenRateLevel_3() * $campaign->amount / 100;
 
             Customer::where('id', '=', $customer_id_level_3)->update([
                 'balance' => $customer_level_2->referrer->balance + $rebate_level_3,
             ]);
+
             CustomerTransaction::create([
                 'content' => 'Thưởng level 3 ['.$campaign->title.']',
                 'amount' => $rebate_level_3,
@@ -98,6 +101,7 @@ class CalculateRebate{
                 'balance' => $customer_level_2->referrer->balance + $rebate_level_3,
                 'customer_id' => $customer_id_level_3
             ]);
+
         }
 
     }

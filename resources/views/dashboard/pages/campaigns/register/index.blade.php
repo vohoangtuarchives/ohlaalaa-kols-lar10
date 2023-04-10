@@ -8,6 +8,11 @@
                         <div class="col-md-3">
                             <h5 class="card-title mb-0">Danh sách đăng ký tham gia Campaign mới</h5>
                         </div>
+                        <div class="col-sm-auto ms-auto">
+                            <div class="d-flex flex-wrap align-items-start justify-content-end gap-2">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -19,8 +24,9 @@
                 <div class="card-header">
                     <div class="row align-items-center g-3">
                         <div class="col-md-3">
-                            <a class="btn btn-outline-warning" href="?status=pending">Pending</a>
-                            <a class="btn btn-outline-success" href="?status=completed">Completed</a>
+                            <a class="btn btn-outline-danger @if(!request()->has('status') || request()->get('status') == 'all') active @endif" href="?status=all">Tất cả</a>
+                            <a class="btn btn-outline-warning ms-2 @if(request()->has('status') && request()->get('status') == 'pending') active @endif" href="?status=pending">Pending</a>
+                            <a class="btn btn-outline-success ms-2 @if(request()->has('status') && request()->get('status') == 'completed') active @endif" href="?status=completed">Completed</a>
                         </div>
                         <div class="col-md-auto ms-auto">
                             <div class="d-flex gap-2">
@@ -40,7 +46,7 @@
             </div>
         </div>
     </div>
-    @include("dashboard.pages.$entity.modal.create")
+    @include("dashboard.pages.campaigns.register.modal.export")
     <div id="updateContentEdit"></div>
 @endsection
 @section("script")

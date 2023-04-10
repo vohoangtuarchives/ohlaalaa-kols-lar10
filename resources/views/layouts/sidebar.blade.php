@@ -2,7 +2,7 @@
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
     <div class="navbar-brand-box">
-       <div class="fs-20 text-white mt-4">OHLAALAA KOL</div>
+       <a class="fs-20 text-white mt-4 d-block" href="{{route("dashboard.index")}}">{{core()->getSetting("site_title", "OHLAALAA KOL")}}</a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
             <i class="ri-record-circle-line"></i>
         </button>

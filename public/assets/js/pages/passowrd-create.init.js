@@ -31,9 +31,9 @@ function validatePassword() {
         confirm_password.setCustomValidity("");
     }
 }
-
 //Password validation
 password.onchange = validatePassword;
+confirm_password.onchange = validatePassword;
 
 var myInput = document.getElementById("password-input");
 var letter = document.getElementById("pass-lower");

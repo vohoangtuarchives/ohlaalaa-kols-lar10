@@ -31,6 +31,11 @@
 
                         <div class="card-body p-4">
                             <div class="p-2 mt-4">
+                                @if (session('status'))
+                                    <div class="alert alert-success text-center mb-4" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
                                 <form action="{{ route('login') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">

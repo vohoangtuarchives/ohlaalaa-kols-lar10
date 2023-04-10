@@ -1,7 +1,7 @@
 <div class="app-menu navbar-menu">
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-       <div class="text-white fs-20 mt-4">OHLAALAA</div>
+       <div class="text-white fs-20 mt-4"><img class="img-fluid" src="{{ asset("1650530495ohlaalaa.jpg") }}" alt=""></div>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
             <i class="ri-record-circle-line"></i>
         </button>

@@ -11,9 +11,26 @@ class CampaignRegisterTables extends DatatablesService{
 
     public function query()
     {
-       $query = CustomerCampaign::with(["customer", "campaign"]);
+//       $query = CustomerCampaign::with(["customer", "campaign"]);
+       $query = CustomerCampaign::query()
+           ->join('customers', 'customers.id', '=', 'customer_campaigns.customer_id')
+           ->join('campaigns', 'campaigns.id', '=', 'customer_campaigns.campaign_id')
+           ->select([
+               "customers.id as id",
+               "customers.name as name",
+               "customers.phone as phone",
+               "customers.email as email",
+               "campaigns.title as title",
+               "customer_campaigns.amount as amount",
+               "customer_campaigns.status as status",
+               "customer_campaigns.created_at as created_at",
+           ])->get();
+
+
         if(isset($this->request['status'])){
-            $query = $query->where("status", '=', $this->request['status']);
+            if($this->request['status'] != 'all'){
+                $query = $query->where("status", '=', $this->request['status']);
+            }
         }
        return $query;
     }
@@ -47,64 +64,52 @@ class CampaignRegisterTables extends DatatablesService{
         ]);
 
         $this->addColumn([
-            'data' => 'customer_id',
-            'name' => 'customer_id',
+            'data' => 'name',
+            'name' => 'name',
             'title' => 'Tên',
             'searchable' => true,
             'orderable' => true,
             'exportable' => true,
             'printable' => true,
-            'class' => 'dt-medium',
-            'render' => function($value) {
-                return $value->customer->name;
-            }
+            'class' => 'dt-medium'
         ]);
 
         $this->addColumn([
             'data' => 'phone',
-            'name' => 'customer.phone',
+            'name' => 'phone',
             'title' => 'Điện thoại',
-            'searchable' => true,
+            'searchable' => false,
             'orderable' => false,
             'exportable' => false,
             'printable' => false,
-            'class' => 'dt-medium',
-            'render' => function($value) {
-                return $value->customer->phone;
-            }
+            'class' => 'dt-medium'
         ]);
 
         $this->addColumn([
             'data' => 'email',
             'name' => 'email',
             'title' => 'EMail',
-            'searchable' => false,
+            'searchable' => true,
             'orderable' => false,
             'exportable' => false,
             'printable' => false,
-            'class' => 'dt-medium',
-            'render' => function($value) {
-                return $value->customer->email;
-            }
+            'class' => 'dt-medium'
         ]);
 
         $this->addColumn([
-            'data' => 'campaign_title',
-            'name' => 'campaign_title',
+            'data' => 'title',
+            'name' => 'title',
             'title' => 'Chiến dịch',
             'searchable' => false,
             'orderable' => false,
             'exportable' => false,
             'printable' => false,
-            'class' => 'dt-medium',
-            'render' => function($value) {
-                return $value->campaign->title;
-            }
+            'class' => 'dt-medium'
         ]);
 
         $this->addColumn([
-            'data' => 'campaign_id',
-            'name' => 'campaign_id',
+            'data' => 'amount',
+            'name' => 'amount',
             'title' => __('admin.pages.amount'),
             'searchable' => true,
             'orderable' => true,
@@ -112,7 +117,7 @@ class CampaignRegisterTables extends DatatablesService{
             'printable' => true,
             'class' => 'dt-date',
             'render' => function($value) {
-                return core()->format_money($value->campaign->amount);
+                return core()->format_money($value->amount);
             }
         ]);
 
@@ -155,10 +160,7 @@ class CampaignRegisterTables extends DatatablesService{
             'orderable' => true,
             'exportable' => true,
             'printable' => true,
-            'class' => 'dt-date',
-            'render' => function($value){
-                return date('d-m-Y', strtotime($value->created_at));
-            },
+            'class' => 'dt-date'
         ]);
 
 

@@ -57,7 +57,20 @@ $menu = [
         "route" => "dashboard.campaigns.register.index",
         'sort'       => 2,
     ],
-
+    [
+        "key"   => "reports",
+        "title" => "admin.menu.reports.title",
+        "icon"  => "ri-settings-5-fill",
+        "route" => "dashboard.reports.kols.revenue",
+        'sort'       => 1,
+    ],
+    [
+        "key"   => "reports.kols-revenue",
+        "title" => "Thu Nhập KOL",
+        "icon"  => "ri-settings-5-fill",
+        "route" => "dashboard.reports.kols.revenue",
+        'sort'       => 1,
+    ],
     [
         "key"   => "settings",
         "title" => "admin.menu.settings.title",

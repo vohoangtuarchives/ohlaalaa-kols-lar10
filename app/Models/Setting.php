@@ -12,7 +12,7 @@ class Setting extends Model
 {
     use HasApiTokens, HasFactory, Notifiable, Sluggable;
 
-    protected $fillable = ['title','status','index', 'visibility'];
+    protected $fillable = ['title','status','index', 'visibility', 'key', 'value'];
 
     public $timestamps = true;
 
