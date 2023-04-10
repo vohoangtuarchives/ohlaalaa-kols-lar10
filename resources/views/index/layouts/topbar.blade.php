@@ -23,12 +23,6 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <div class="dropdown-item" >
-                            <i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i>
-                            <span class="align-middle">Balance :
-                                <b>{{ core()->format_money(Auth::guard("customers")->user()->balance) }} đ</b>
-                            </span>
-                        </div>
                         <a class="dropdown-item" href="{{route("profile.settings")}}">
                             <i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Hồ sơ</span>
                         </a>

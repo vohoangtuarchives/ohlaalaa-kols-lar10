@@ -55,7 +55,17 @@
 {{--                            </div>--}}
                         </div><!-- end card header -->
                     </div>
+                    @if(empty(Auth::guard("customers")->user()->banking_account_number) || 
+                        empty(Auth::guard("customers")->user()->banking_account_name) ||
+                        empty(Auth::guard("customers")->user()->banking_name))
+                        <div class="col-md-12 mt-3">
+                            <!-- Info Alert -->
+                            <div class="alert alert-warning" role="alert">
+                                Xin vui lòng xác lập thông tin chuyển khoản <a href="{{ route("profile.settings") }}"><strong> ở đây </strong></a>
+                            </div>
 
+                        </div>
+                    @endif
                     <!--end col-->
                 </div>
             </div> <!-- end .h-100-->

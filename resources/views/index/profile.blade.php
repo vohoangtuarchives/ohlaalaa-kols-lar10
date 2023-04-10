@@ -67,6 +67,55 @@
                                 <option value="Nữ"  @if($customer->gender =='Nữ') selected @endif>Nữ</option>
                             </select>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Tên ngân hàng<span
+                                        class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('banking_name') is-invalid @enderror"
+                                   name="banking_name" value="{{ $customer->banking_name }}" id="banking_name"
+                                   placeholder="Nhập tên ngân hàng" required>
+                            @error('banking_name')
+                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                            @enderror
+                            <div class="invalid-feedback">
+                                @lang("app.register.invalid-feedback.banking_name")
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="banking_account_name" class="form-label">Tên chủ tài khoản<span
+                                        class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('banking_account_name') is-invalid @enderror"
+                                   name="banking_account_name" value="{{ $customer->banking_account_name }}" id="banking_account_name"
+                                   placeholder="Nhập tên chủ tài khoản" required>
+                            @error('banking_account_name')
+                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                            @enderror
+                            <div class="invalid-feedback">
+                                @lang("app.register.invalid-feedback.banking_account_name")
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="banking_account_number" class="form-label">Số tài khoản<span
+                                        class="text-danger">*</span></label>
+                            <input type="text" class="form-control @error('banking_account_number') is-invalid @enderror"
+                                   name="banking_account_number" value="{{ $customer->banking_account_number }}" id="banking_account_number"
+                                   placeholder="Nhập số tài khoản" required>
+                            @error('banking_account_number')
+                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                            @enderror
+                            <div class="invalid-feedback">
+                                @lang("app.register.invalid-feedback.banking_account_number")
+                            </div>
+                        </div>
+
                         @isset($referrer)
                             <div>
                                 <x-input-label for="referral_code" class="fs-16 mb-0">

@@ -57,7 +57,8 @@ class CalculateRebate{
                 'amount' => $rebate_level_1,
                 'old_balance' => $customer->referrer->balance,
                 'balance' => $customer->referrer->balance + $rebate_level_1,
-                'customer_id' => $customer_id_level_1
+                'customer_id' => $customer_id_level_1,
+                'campaign_id' => $campaign->id
             ]);
 
             $customer_id_level_2 = $customer->referrer->referrer_id ?? 0;
@@ -80,7 +81,8 @@ class CalculateRebate{
                 'amount' => $rebate_level_2,
                 'old_balance' => $customer_level_2->balance,
                 'balance' => $customer_level_2->balance + $rebate_level_2,
-                'customer_id' => $customer_id_level_2
+                'customer_id' => $customer_id_level_2,
+                'campaign_id' => $campaign->id
             ]);
 
             $customer_id_level_3 = $customer_level_2->referrer_id;
@@ -99,7 +101,8 @@ class CalculateRebate{
                 'amount' => $rebate_level_3,
                 'old_balance' => $customer_level_2->referrer->balance,
                 'balance' => $customer_level_2->referrer->balance + $rebate_level_3,
-                'customer_id' => $customer_id_level_3
+                'customer_id' => $customer_id_level_3,
+                'campaign_id' => $campaign->id
             ]);
 
         }

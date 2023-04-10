@@ -16,11 +16,12 @@ class CampaignRegisterTables extends DatatablesService{
            ->join('customers', 'customers.id', '=', 'customer_campaigns.customer_id')
            ->join('campaigns', 'campaigns.id', '=', 'customer_campaigns.campaign_id')
            ->select([
-               "customers.id as id",
+               "customers.id as customer_id",
                "customers.name as name",
                "customers.phone as phone",
                "customers.email as email",
                "campaigns.title as title",
+               "campaigns.id as campaign_id",
                "customer_campaigns.amount as amount",
                "customer_campaigns.status as status",
                "customer_campaigns.created_at as created_at",
@@ -53,8 +54,8 @@ class CampaignRegisterTables extends DatatablesService{
             'raw' => true
         ]);
         $this->addColumn([
-            'data' => 'id',
-            'name' => 'id',
+            'data' => 'customer_id',
+            'name' => 'customer_id',
             'title' => 'Id',
             'searchable' => false,
             'orderable' => true,

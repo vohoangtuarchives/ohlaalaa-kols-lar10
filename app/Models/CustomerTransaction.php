@@ -12,7 +12,7 @@ class CustomerTransaction extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = ['content','status','old_balance', 'amount', 'balance', 'customer_id', 'completed_at'];
+    protected $fillable = ['content','status','old_balance', 'amount', 'balance', 'customer_id', 'campaign_id', 'completed_at'];
 
     public $timestamps = true;
 

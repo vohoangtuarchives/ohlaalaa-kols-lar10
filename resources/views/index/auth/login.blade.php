@@ -77,8 +77,10 @@
                                 </form>
                             </div>
                         </div>
+
                         <!-- end card body -->
                     </div>
+
                 </div>
             </div>
             <!-- end row -->

@@ -37,7 +37,10 @@ class Customer extends Authenticatable implements MustVerifyEmail
         'referral_code',
         'campaigns',
         'address',
-        'username'
+        'username',
+        'banking_name',
+        'banking_account_name',
+        'banking_account_number'
     ];
     public $timestamps = true;
     /**
