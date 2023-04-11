@@ -68,9 +68,6 @@ class RegisteredUserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
-        $input['city'] = (int) $input['city'];
-        $input['district'] = (int) $input['district'];
-        $input['ward'] = (int) $input['ward'];
 
         $data = array_merge($input, [
             'referral_code' => md5($input['email']),
