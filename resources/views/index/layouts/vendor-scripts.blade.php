@@ -90,14 +90,5 @@
         });
     }
 
-    function singleDelete(id , url){
-        let confirm = showSwalConfirm("Bạn có chắc muốn xóa?", "Có");
-        if (confirm.value) {
-            let response = httpDelete(url, {ids: id});
-            if(response.success){
-                location.reload();
-            }
-        }
-    }
 
 </script>

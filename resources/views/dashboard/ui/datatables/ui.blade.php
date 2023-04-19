@@ -18,11 +18,11 @@
 @push("styles")
     <style>
         @isset($hideSearch)
-#datatables-html_filter{
+            #datatables-html_filter{
             display: none;
         }
         @endisset
-#datatables-html_length{
+            #datatables-html_length{
             display: none;
         }
 
