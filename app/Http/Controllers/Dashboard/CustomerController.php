@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\CustomerCampaign;
 use App\Repository\Customers\CustomerRepositoryContract;
 
 use App\Datatables\CustomerTables;
 use App\Models\Customer;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -100,11 +102,18 @@ class CustomerController extends Controller
         return redirect()->back()->with('success', 'Item Updated');
     }
 
-    public function delete($id){
+    public function delete($id = null){
         if(request()->has('ids')){
             $ids = request()->get('ids');
             try {
-                Customers::destroy($ids);
+                foreach ($ids as $id){
+                    $customerCampaigns = CustomerCampaign::with("customer")->where("customer_id", '=', $id)->get();
+                    foreach ($customerCampaigns as $customerCampaign){
+                        $customerCampaign->delete();
+                    }
+                    Customer::destroy($id);
+                }
+
                 return response()->json(['success' => true], 200);
             }catch (\Exception $exception){
                 return $exception->getMessage();
